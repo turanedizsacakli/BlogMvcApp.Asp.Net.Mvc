@@ -8,7 +8,8 @@ namespace BlogMvcApp.Models
 {
     public class BlogContext:DbContext 
     {
-        public BlogContext()
+        //public BlogContext() : base("blogDb") blogDb isimli connection string için kullanılacak...
+        public BlogContext(): base("blogDb")
         {
             Database.SetInitializer(new BlogInitializer()); 
         }

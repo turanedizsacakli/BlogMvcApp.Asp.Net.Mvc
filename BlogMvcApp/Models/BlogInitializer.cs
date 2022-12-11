@@ -26,11 +26,51 @@ namespace BlogMvcApp.Models
 
             List<Blog> blogs = new List<Blog>()
         {
-            new Blog(){Title="About C#",Explanation="A Page About C#...",Photo="photo.jpg", CreatedDate=DateTime.Now.AddDays(-10),Content="Programming...",Approval=true,AddedHomePage=true, CategoryId=1},
-            new Blog(){Title="About Asp.Net MVC",Explanation="A Page About Asp.Net MVC...",Photo="photo.jpg", CreatedDate=DateTime.Now.AddDays(-10),Content="Programming...",Approval=true,AddedHomePage=true, CategoryId=2},
-            new Blog(){Title="About Asp.Net WebForm",Explanation="A Page About Asp.Net WebForm...",Photo="photo.jpg", CreatedDate=DateTime.Now.AddDays(-10),Content="Programming...",Approval=true,AddedHomePage=true, CategoryId=3},
-            new Blog(){Title="About Windows Form",Explanation="A Page About Windows Form...",Photo="photo4.jpg", CreatedDate=DateTime.Now.AddDays(-10),Content="Programming...",Approval=true,AddedHomePage=false, CategoryId=4},
-            new Blog(){Title="About C#",Explanation="A Page About C#...",Photo="photo.jpg", CreatedDate=DateTime.Now.AddDays(-10),Content="Programming...",Approval=false,AddedHomePage=true, CategoryId=1},
+            new Blog(){
+                Title="About C#",
+                Explanation="A Page About C#...",
+                Photo="photo.jpg", 
+                CreatedDate=DateTime.Now.AddDays(-10),
+                Content="Programming...",
+                Approval=true,
+                AddedHomePage=true, 
+                CategoryId=1},
+            new Blog(){
+                Title="About Asp.Net MVC",
+                Explanation="A Page About Asp.Net MVC...",
+                Photo="photo.jpg", 
+                CreatedDate=DateTime.Now.AddDays(-10),
+                Content="Programming...",
+                Approval=true,
+                AddedHomePage=true, 
+                CategoryId=2},
+            new Blog(){
+                Title="About Asp.Net WebForm",
+                Explanation="A Page About Asp.Net WebForm...",
+                Photo="photo.jpg", 
+                CreatedDate=DateTime.Now.AddDays(-10),
+                Content="Programming...",
+                Approval=true,
+                AddedHomePage=true, 
+                CategoryId=3},
+            new Blog(){
+                Title="About Windows Form",
+                Explanation="A Page About Windows Form...",
+                Photo="photo4.jpg", 
+                CreatedDate=DateTime.Now.AddDays(-10),
+                Content="Programming...",
+                Approval=true,
+                AddedHomePage=false, 
+                CategoryId=4},
+            new Blog(){
+                Title="About C#",
+                Explanation="A Page About C#...",
+                Photo="photo.jpg", 
+                CreatedDate=DateTime.Now.AddDays(-10),
+                Content="Programming...",
+                Approval=false,
+                AddedHomePage=true, 
+                CategoryId=1},
 
         };
 
