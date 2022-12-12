@@ -132,6 +132,7 @@
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\BlogContext.cs" />
     <Compile Include="Models\BlogInitializer.cs" />
+    <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

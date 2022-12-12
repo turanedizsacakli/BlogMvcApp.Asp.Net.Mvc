@@ -10,9 +10,10 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
+/* istersek sınırlama yapmamıza yarar inpur select ve textarea hakkında...
 input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 

@@ -9,7 +9,7 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken() 
     
     <div class="form-horizontal">
         <h4>Category</h4>
@@ -34,7 +34,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

@@ -17,7 +17,8 @@ namespace BlogMvcApp.Controllers
         // GET: Blog
         public ActionResult Index()
         {
-            var blogs = db.blogs.Include(b => b.Category);
+            //to make list line... OrderByDescending(i => i.CreatedDate)
+            var blogs = db.blogs.Include(b => b.Category).OrderByDescending(i=>i.CreatedDate);
             return View(blogs.ToList());
         }
 
@@ -48,10 +49,15 @@ namespace BlogMvcApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Explanation,Photo,Content,CreatedDate,Approval,AddedHomePage,CategoryId")] Blog blog)
+        public ActionResult Create([Bind(Include = "Title,Explanation,Photo,Content,CategoryId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
+                blog.CreatedDate = DateTime.Now;
+                blog.AddedHomePage = true;
+                blog.Approval = true;
+
+
                 db.blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,13 +88,28 @@ namespace BlogMvcApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Explanation,Photo,Content,CreatedDate,Approval,AddedHomePage,CategoryId")] Blog blog)
+        public ActionResult Edit([Bind(Include = "Id,Title,Explanation,Photo,Content,Approval,AddedHomePage,CategoryId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(blog).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var entity = db.blogs.Find(blog.Id);
+                if (entity!=null)
+                {
+                    entity.Title = blog.Title;
+                    entity.Explanation = blog.Explanation;
+                    entity.Photo = blog.Photo;
+                    entity.Approval = blog.Approval;
+                    entity.AddedHomePage = blog.AddedHomePage;
+                    entity.CategoryId = blog.CategoryId;
+                    entity.Content = blog.Content; 
+                    
+                    //db.Entry(blog).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    TempData["Blog"] = entity;
+                    return RedirectToAction("Index");
+                }
+                
             }
             ViewBag.CategoryId = new SelectList(db.categories, "Id", "CategoryName", blog.CategoryId);
             return View(blog);

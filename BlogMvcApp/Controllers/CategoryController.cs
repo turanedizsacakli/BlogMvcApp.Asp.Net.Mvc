@@ -54,7 +54,8 @@ namespace BlogMvcApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CategoryName")] Category category)
+        //we only wait for categoryname we dont wait for id and so we deleted id side...
+        public ActionResult Create([Bind(Include = "CategoryName")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -92,6 +93,8 @@ namespace BlogMvcApp.Controllers
             {
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
+
+                TempData["Category"] = category;
                 return RedirectToAction("Index");
             }
             return View(category);
