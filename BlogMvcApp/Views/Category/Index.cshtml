@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BlogMvcApp.Models.Category>
+﻿@model IEnumerable<BlogMvcApp.Models.CategoryModel>
 
 @{
     ViewBag.Title = "Index";
@@ -7,13 +7,14 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new {@class="btn btn-success"})
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CategoryName)
         </th>
+        <th>CategoryContents</th>
         <th></th>
     </tr>
 
@@ -23,9 +24,13 @@
             @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            
+             @item.BlogContent  
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

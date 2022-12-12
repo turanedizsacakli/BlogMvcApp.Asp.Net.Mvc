@@ -12,7 +12,7 @@ namespace BlogMvcApp.Models
         {
             List<Category> categories = new List<Category>()
             {
-                new Category() { CategoryName="C#" },
+                new Category() { CategoryName="CSharp" },
                 new Category() { CategoryName="Asp.Net MVC" },
                 new Category() { CategoryName="Asp.Net WebForm" },
                 new Category() { CategoryName="Windows Form" },
