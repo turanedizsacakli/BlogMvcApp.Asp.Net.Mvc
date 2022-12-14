@@ -4,9 +4,18 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Model.Title</h2>
+<hr />  <hr />
+<p>
+    <span class="glyphicon glyphicon-time"></span>
+    @Model.CreatedDate
+</p>
+<hr /><hr />
+<blockquote>
+    <p>@Model.Explanation</p>
+</blockquote>
 
-<div>
+@*<div>
     <h4>Blog</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -79,4 +88,4 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

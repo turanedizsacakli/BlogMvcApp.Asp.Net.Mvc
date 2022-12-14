@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Mvc;
 using BlogMvcApp.Models;
@@ -13,6 +14,39 @@ namespace BlogMvcApp.Controllers
     public class BlogController : Controller
     {
         private BlogContext db = new BlogContext();
+
+        public ActionResult List(int? id,string keyword)
+        {
+            var blogs = db.blogs
+                .Where(i => i.Approval == true)
+                .Select(b => new BlogModel
+                {
+                    Id = b.Id,
+                    AddedHomePage = b.AddedHomePage,
+                    Approval = b.Approval,
+                    Content = b.Content,
+                    CreatedDate = b.CreatedDate,
+                    Title = b.Title.Length > 100 ? b.Title.Substring(0, 100) + "..." : b.Title,
+                    CategoryId = b.CategoryId
+                }).AsQueryable();
+
+            if (string.IsNullOrEmpty("keyword")==false)
+            {
+                blogs=blogs.Where(i=>i.Title.Contains(keyword)||i.Content.Contains(keyword));
+            }
+            else
+            {
+
+            }
+
+            if (id !=null)
+            {
+                blogs=blogs.Where(i => i.CategoryId == id);
+            }
+                
+            //return View(context.blogs.ToList());
+            return View(blogs.ToList());
+        }
 
         // GET: Blog
         public ActionResult Index()

@@ -16,6 +16,7 @@ namespace BlogMvcApp.Controllers
         public ActionResult Index()
         {
             var blogs = context.blogs
+                .Where(i => i.Approval == true && i.AddedHomePage == true)
                 .Select(b => new BlogModel
                 {
                     Id = b.Id,
@@ -24,9 +25,9 @@ namespace BlogMvcApp.Controllers
                     Content = b.Content,
                     CreatedDate = b.CreatedDate,
                     Title = b.Title.Length > 100 ? b.Title.Substring(0, 100) + "..." : b.Title,
+                    
 
-                })
-                .Where(i => i.Approval == true && i.AddedHomePage == true);
+                });
 
             //return View(context.blogs.ToList());
             return View(blogs.ToList());

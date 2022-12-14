@@ -1,15 +1,12 @@
-﻿@*@model IEnumerable<BlogMvcApp.Models.Blog>*@
-@model IEnumerable<BlogMvcApp.Models.BlogModel>
+﻿@model IEnumerable<BlogMvcApp.Models.BlogModel>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
-
+@Html.Partial("Search")
 @Html.Partial("BlogList", Model)
-
-
 @*<div class="row">
     <div class="col-md-8">
         @foreach (var blog in Model)
@@ -25,19 +22,20 @@
                 <p>
                     @blog.Content
                 </p>
-                @Html.ActionLink("Details...","Details","Blog",new { id = blog.Id },new { @class = "btn btn-primary" })
+                @Html.ActionLink("Details...", "Details", "Blog", new { id = blog.Id }, new { @class = "btn btn-primary" })
 
             </div>
         }
-    </div>*</div>*@
+    </div>*@
 
 @section RightColumn{
-    @Html.Partial("Search")
+
     <p>this is rigth column...</p>
     @{Html.RenderAction("CategoryList", "Category");}
 }
 
 
+</div>
 
 
 
